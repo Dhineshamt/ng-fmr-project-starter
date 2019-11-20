@@ -1,0 +1,17 @@
+<div class="card" style="width: 18rem;">
+  <img
+    src="{{ pollItem.imageUrl }}"
+    class="card-img-top"
+    alt="Image"
+    height="150"
+  />
+  <div class="card-body">
+    <h5 class="card-title">{{ pollItem.title }}</h5>
+    <p class="card-text">
+      {{ pollItem.description }}
+    </p>
+    <button class="btn btn-primary">
+      Vote <span class="badge badge-light">0</span>
+    </button>
+  </div>
+</div>
