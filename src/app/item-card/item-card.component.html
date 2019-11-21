@@ -10,8 +10,8 @@
     <p class="card-text">
       {{ pollItem.description }}
     </p>
-    <button class="btn btn-primary">
-      Vote <span class="badge badge-light">0</span>
+    <button class="btn btn-primary" (click)="castVote()">
+      Vote <span class="badge badge-light">{{ pollItem.voteCount }}</span>
     </button>
   </div>
 </div>

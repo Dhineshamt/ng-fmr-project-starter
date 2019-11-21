@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PollService } from '../_services/poll.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  totalVotes: number;
 
-  constructor() { }
+  constructor(private pollService: PollService) {}
 
   ngOnInit() {
+    this.totalVotes = this.pollService.totalVotes;
   }
-
 }
