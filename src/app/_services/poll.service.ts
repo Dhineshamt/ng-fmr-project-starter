@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -35,19 +36,28 @@ export class PollService {
     }
   ];
 
+  private state = new BehaviorSubject<PollItem[]>(this.items);
+  private totalVotesSubject = new BehaviorSubject<number>(this.totalVotes);
+
+  pollItems$ = this.state.asObservable();
+  totalVotes$ = this.totalVotesSubject.asObservable();
+
   constructor() {}
 
-  get pollItems(): PollItem[] {
-    return this.items;
-  }
-
-  get totalVotes(): number {
+  private get totalVotes(): number {
     let total = 0;
 
-    this.pollItems.forEach(i => {
+    this.items.forEach(i => {
       total += i.voteCount;
     });
 
     return total;
+  }
+
+  castVote = this.vote.bind(this);
+
+  vote(item: PollItem): void {
+    item.voteCount++;
+    this.totalVotesSubject.next(this.totalVotes);
   }
 }

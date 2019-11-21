@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PollService } from '../_services/poll.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -7,11 +8,11 @@ import { PollService } from '../_services/poll.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  totalVotes: number;
+  totalVotes$: Observable<number>;
 
   constructor(private pollService: PollService) {}
 
   ngOnInit() {
-    this.totalVotes = this.pollService.totalVotes;
+    this.totalVotes$ = this.pollService.totalVotes$;
   }
 }

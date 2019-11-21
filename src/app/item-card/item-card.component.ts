@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { PollService } from '../_services/poll.service';
 
 @Component({
   selector: 'app-item-card',
@@ -7,12 +8,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ItemCardComponent implements OnInit {
   @Input() pollItem: PollItem;
+  @Input() poll: (item: PollItem) => void;
 
   constructor() {}
 
   ngOnInit() {}
 
-  castVote() {
-    this.pollItem.voteCount++;
+  clickHandler() {
+    this.poll(this.pollItem);
   }
 }

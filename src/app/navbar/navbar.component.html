@@ -10,9 +10,9 @@
     />
     Polling App
   </a>
-  <div class="navbar-nav">
-    <a class="nav-item nav-link active"
-      >Total Votes So far... {{ totalVotes }}</a
-    >
+  <div class="navbar-nav ml-auto">
+    <h2>
+      <span class="badge badge-secondary">{{ totalVotes$ | async }}</span>
+    </h2>
   </div>
 </nav>
