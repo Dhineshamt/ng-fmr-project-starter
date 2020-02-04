@@ -41,6 +41,7 @@ export class PollService {
     return this.items;
   }
 
+
   get totalVotes(): number {
     let total = 0;
 
@@ -51,3 +52,4 @@ export class PollService {
     return total;
   }
 }
+
